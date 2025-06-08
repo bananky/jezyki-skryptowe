@@ -4,6 +4,6 @@ Bashu, który:
 
 :white_check_mark: 3.0 działa w trybie gry turowej [Link do commita 1](https://github.com/bananky/jezyki-skryptowe/commit/9adc823a8fd9ca5421a0b25ba5b56c010287865c)
 
-:x: 4.0 pozwala na zapis i odtwarzanie przerwanej gry (save game)
+:x: 4.0 pozwala na zapis i odtwarzanie przerwanej gry (save game) [Link do commita 2](https://github.com/bananky/jezyki-skryptowe/commit/107cb8ada10387a502ab3a29aa27a33b0b6d9898)
 
 :x: 5.0 pozwala na grę z komputerem
