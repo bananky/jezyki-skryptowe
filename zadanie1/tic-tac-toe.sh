@@ -1,6 +1,10 @@
 #!/bin/bash
 
+SAVE_FILE="savegame.txt"
+
 board=(1 2 3 4 5 6 7 8 9)
+current_player="X"
+moves=0
 
 draw_board() {
     echo ""
@@ -28,13 +32,39 @@ check_winner() {
     return 1
 }
 
-current_player="X"
-moves=0
+save_game() {
+    echo "${board[*]}" > "$SAVE_FILE"
+    echo "$current_player" >> "$SAVE_FILE"
+    echo "$moves" >> "$SAVE_FILE"
+}
+
+load_game() {
+    if [[ -f "$SAVE_FILE" ]]; then
+        read -a board < "$SAVE_FILE"
+        read -r current_player < <(sed -n 2p "$SAVE_FILE")
+        read -r moves < <(sed -n 3p "$SAVE_FILE")
+        echo "Gra została wczytana."
+    fi
+}
+
+if [[ -f "$SAVE_FILE" ]]; then
+    echo "Znaleziono zapis gry. Czy chcesz kontynuować? (t/n)"
+    read -r answer
+    if [[ "$answer" == "t" || "$answer" == "T" ]]; then
+        load_game
+    fi
+fi
 
 while true; do
     draw_board
-    echo "Gracz $current_player, wybierz pole (1-9):"
+    echo "Gracz $current_player, wybierz pole (1-9) lub wpisz 'q' by zakończyć:"
     read -r move
+
+    if [[ "$move" == "q" ]]; then
+        echo "Gra przerwana. Zapisano stan do pliku '$SAVE_FILE'."
+        save_game
+        exit 0
+    fi
 
     if ! [[ "$move" =~ ^[1-9]$ ]] || [[ "${board[$((move-1))]}" == "X" || "${board[$((move-1))]}" == "O" ]]; then
         echo "Nieprawidłowy ruch. Spróbuj ponownie."
@@ -43,14 +73,17 @@ while true; do
 
     board[$((move-1))]=$current_player
     ((moves++))
+    save_game
 
     if check_winner "$current_player"; then
         draw_board
         echo "Gracz $current_player wygrywa!"
+        rm -f "$SAVE_FILE"
         break
     elif [[ $moves -eq 9 ]]; then
         draw_board
         echo "Remis!"
+        rm -f "$SAVE_FILE"
         break
     fi
 
@@ -60,4 +93,3 @@ while true; do
         current_player="X"
     fi
 done
-
