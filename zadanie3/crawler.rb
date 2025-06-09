@@ -4,6 +4,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'json'
 require 'cgi'
+require 'sequel'
 
 Item = Struct.new(:title, :price, :asin, :dimensions, :link) do
   def to_json(*options)
@@ -120,3 +121,29 @@ results = crawler.run
 
 puts
 puts JSON.pretty_generate(results)
+
+DB = Sequel.sqlite('produkty.db')
+
+DB.create_table? :products do
+  primary_key :id
+  String :title
+  String :price
+  String :asin
+  String :dimensions
+  String :link
+end
+
+products_table = DB[:products]
+
+results.each do |item|
+  products_table.insert(
+    title: item.title,
+    price: item.price,
+    asin: item.asin,
+    dimensions: item.dimensions,
+    link: item.link
+  )
+end
+
+puts
+puts "Zapisano #{results.size} produktów do bazy danych 'produkty.db'."
