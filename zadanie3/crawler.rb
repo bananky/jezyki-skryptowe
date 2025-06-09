@@ -5,13 +5,14 @@ require 'open-uri'
 require 'json'
 require 'cgi'
 
-Item = Struct.new(:title, :price, :asin, :dimensions) do
+Item = Struct.new(:title, :price, :asin, :dimensions, :link) do
   def to_json(*options)
     {
       title: title,
       price: price,
       asin: asin,
-      dimensions: dimensions
+      dimensions: dimensions,
+      link: link
     }.to_json(*options)
   end
 end
@@ -61,13 +62,13 @@ class ProductCrawler
       title = element.at_css('h2')&.text&.strip
       price = element.at_css('.a-price .a-offscreen')&.text&.strip
       asin = element['data-asin']
-
       next unless title && price && asin && !asin.empty?
 
       dimensions = scrape_dimensions(asin)
+      product_link = "#{BASE_URL}/dp/#{asin}"
 
-      items << Item.new(title, price, asin, dimensions)
-      sleep(rand(0.5..1.0))  # anti-bot delay
+      items << Item.new(title, price, asin, dimensions, product_link)
+      sleep(rand(0.5..1.0))
     end
 
     items
