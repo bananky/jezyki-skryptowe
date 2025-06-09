@@ -16,10 +16,14 @@ Należy stworzyć prosty sklep z serwerem REST API
 
 :white_check_mark: 3.0 Aplikacja ma podstawowe endpointy w NodeJS (np. Express) do
 produktów i kategorii [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/4da8b7211d7ff371f3b6f5da18c990b663b3503c)
+
 :white_check_mark: 3.5 Dane zapisywanie są w bazie danych po stronie NodeJS [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/ac7b79e051e42db45f324c9bc1fcd97f8ad57785)
+
 :white_check_mark: 4.0 Axios wykorzystany do wywołań [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/697474f6f9319934e06b15aedb578fc4563b1f59)
-4.5 Opcja koszyka i płatności działa na React Hook [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/43537782201074c196bbb03d0fa90926d253c16b)
-5.0 Konfiguracja CORS po stronie NodeJS + konfiguracja po stronie
+
+:white_check_mark: 4.5 Opcja koszyka i płatności działa na React Hook [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/43537782201074c196bbb03d0fa90926d253c16b)
+
+:white_check_mark: 5.0 Konfiguracja CORS po stronie NodeJS + konfiguracja po stronie
 ReactJS [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/97b140dafd2c8217503ac7c880c5c2dd069c8a6e)
 
 
