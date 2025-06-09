@@ -3,10 +3,16 @@
 require 'nokogiri'
 require 'open-uri'
 require 'json'
+require 'cgi'
 
-Item = Struct.new(:name, :cost) do
-  def to_json(*args)
-    { title: name, price: cost }.to_json(*args)
+Item = Struct.new(:title, :price, :asin, :dimensions) do
+  def to_json(*options)
+    {
+      title: title,
+      price: price,
+      asin: asin,
+      dimensions: dimensions
+    }.to_json(*options)
   end
 end
 
@@ -48,15 +54,57 @@ class ProductCrawler
 
   def extract_items(doc)
     items = []
+
     doc.css('.s-result-item').each do |element|
       break if items.size >= @max_results
 
       title = element.at_css('h2')&.text&.strip
       price = element.at_css('.a-price .a-offscreen')&.text&.strip
+      asin = element['data-asin']
 
-      items << Item.new(title, price) if title && price
+      next unless title && price && asin && !asin.empty?
+
+      dimensions = scrape_dimensions(asin)
+
+      items << Item.new(title, price, asin, dimensions)
+      sleep(rand(0.5..1.0))  # anti-bot delay
     end
+
     items
+  end
+
+  def scrape_dimensions(asin)
+    url = "#{BASE_URL}/dp/#{asin}"
+    begin
+      doc = Nokogiri::HTML(URI.open(url, HEADERS))
+    rescue OpenURI::HTTPError => e
+      puts "Błąd ładowania strony produktu #{asin}: #{e.message}"
+      return nil
+    end
+
+    dimension = nil
+
+    doc.css('#productDetails_techSpec_section_1 tr').each do |row|
+      key = row.at_css('th')&.text&.strip
+      value = row.at_css('td')&.text&.strip
+      if key&.downcase&.include?('wymiary') || key&.downcase&.include?('dimensions')
+        dimension = value
+        break
+      end
+    end
+
+    if dimension.nil?
+      doc.css('#prodDetails tr').each do |row|
+        key = row.at_css('td.label')&.text&.strip
+        value = row.at_css('td.value')&.text&.strip
+        if key&.downcase&.include?('wymiary') || key&.downcase&.include?('dimensions')
+          dimension = value
+          break
+        end
+      end
+    end
+
+    dimension
   end
 end
 
