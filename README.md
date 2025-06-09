@@ -39,6 +39,6 @@ kategoria [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/4
 
 :white_check_mark: 4.0 Należy rozszerzyć dane o produktach o dane szczegółowe widoczne tylko na podstronie o produkcie [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/fab24637f222f489f8e9d42c12266515e16bb192)
 
-4.5 Należy zapisać linki do produktów
+:white_check_mark: 4.5 Należy zapisać linki do produktów [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/339a1c2b591fbb4f45e29520a0c1baf465f23669)
 
-5.0 Dane należy zapisać w bazie danych np. SQLite via Sequel
+:white_check_mark: 5.0 Dane należy zapisać w bazie danych np. SQLite via Sequel [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/5f23cb0171550e6e655e1bf1ff532b5df59c3c5f)
