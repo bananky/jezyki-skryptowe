@@ -1,8 +1,7 @@
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function ProductList() {
+function ProductList({ onAddToCart }) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -19,6 +18,9 @@ function ProductList() {
           <li key={p.id}>
             {p.name} - {p.price} zł
             {p.Category ? ` (kategoria: ${p.Category.name})` : ''}
+            <button onClick={() => onAddToCart(p)} style={{ marginLeft: 10 }}>
+              ➕ Do koszyka
+            </button>
           </li>
         ))}
       </ul>
