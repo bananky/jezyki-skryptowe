@@ -15,17 +15,18 @@ class ProductCrawler
   HEADERS = {
     'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36'
   }
-  LIMIT = 5
 
-  def initialize(search_phrase)
-    @query = search_phrase.strip
-    raise ArgumentError, "Nie podano zapytania wyszukiwania" if @query.empty?
+  def initialize(search_phrase, max_results = 5)
+    @query = search_phrase.strip.gsub(/\s+/, ' ')
+    raise ArgumentError, "Wyszukiwanie nie może być puste" if @query.empty?
+    @max_results = max_results
   end
 
   def run
-    document = load_results_page
-    check_results(document)
-    extract_items(document)
+    puts "Szukam produktów dla: '#{@query}'"
+    doc = load_results_page
+    check_results(doc)
+    extract_items(doc)
   end
 
   private
@@ -48,9 +49,7 @@ class ProductCrawler
   def extract_items(doc)
     items = []
     doc.css('.s-result-item').each do |element|
-      break if items.size >= LIMIT
-
-      next unless element.is_a?(Nokogiri::XML::Element)
+      break if items.size >= @max_results
 
       title = element.at_css('h2')&.text&.strip
       price = element.at_css('.a-price .a-offscreen')&.text&.strip
@@ -61,9 +60,8 @@ class ProductCrawler
   end
 end
 
-# Uruchomienie z linii poleceń
 if ARGV.empty?
-  puts "Użycie: ruby amazon_scraper.rb <szukana fraza>"
+  puts "Użycie: ruby amazon_scraper.rb <szukane słowa kluczowe>"
   exit
 end
 
@@ -71,4 +69,5 @@ phrase = ARGV.join(' ')
 crawler = ProductCrawler.new(phrase)
 results = crawler.run
 
+puts
 puts JSON.pretty_generate(results)
