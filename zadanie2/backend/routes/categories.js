@@ -1,10 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const categories = require('../data/categories.json');
+const { Category } = require('../models');
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
+  const categories = await Category.findAll();
   res.json(categories);
 });
 
-module.exports = router;
+router.post('/', async (req, res) => {
+  const { name } = req.body;
+  const category = await Category.create({ name });
+  res.status(201).json(category);
+});
 
+module.exports = router;

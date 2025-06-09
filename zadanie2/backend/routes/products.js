@@ -1,10 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const products = require('../data/products.json');
+const { Product, Category } = require('../models');
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
+  const products = await Product.findAll({ include: Category });
   res.json(products);
 });
 
-module.exports = router;
+router.post('/', async (req, res) => {
+  const { name, price, categoryId } = req.body;
+  const product = await Product.create({ name, price, CategoryId: categoryId });
+  res.status(201).json(product);
+});
 
+module.exports = router;
