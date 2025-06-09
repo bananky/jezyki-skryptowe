@@ -27,4 +27,18 @@ produktów i kategorii [Link do commita](https://github.com/bananky/jezyki-skryp
 ReactJS [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/97b140dafd2c8217503ac7c880c5c2dd069c8a6e)
 
 
+**Zadanie3** Crawler w Ruby
 
+Należy stworzyć crawler produktów na Amazonie lub Allegro w Ruby
+wykorzystują bibliotekę Nokogiri.
+
+:white_check_mark: 3.0 Należy pobrać podstawowe dane o produktach (tytuł, cena), dowolna
+kategoria [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/45e2fd999e07dc78228327c4f5fd8e7266f561c1)
+
+:white_check_mark: 3.5 Należy pobrać podstawowe dane o produktach wg słów kluczowych [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/291bf4e4320936b113d1bc0e0b18cfabcd910a03)
+
+:white_check_mark: 4.0 Należy rozszerzyć dane o produktach o dane szczegółowe widoczne tylko na podstronie o produkcie [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/fab24637f222f489f8e9d42c12266515e16bb192)
+
+4.5 Należy zapisać linki do produktów
+
+5.0 Dane należy zapisać w bazie danych np. SQLite via Sequel
