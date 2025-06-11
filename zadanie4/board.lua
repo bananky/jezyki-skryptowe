@@ -1,4 +1,7 @@
 local Piece = require("piece")
+local json = require("dkjson")
+local Save = require("save")
+
 
 local Board = {}
 Board.__index = Board
@@ -63,15 +66,40 @@ function Board:clearLines()
     end
 end
 
+function Board:saveGame()
+    local data = {
+        grid = self.grid,
+        piece = {
+            shape = self.piece.shape,
+            x = self.piece.x,
+            y = self.piece.y
+        }
+    }
+    Save.save(data)
+end
+
+function Board:loadGame()
+    local data = Save.load()
+    if data and data.grid and data.piece then
+        self.grid = data.grid
+        self.piece = Piece.fromSave(data.piece.shape, data.piece.x, data.piece.y)
+    end
+end
+
 function Board:draw()
     for y = 1, self.height do
-        for x = 1, self.width do
-            if self.grid[y][x] == 1 then
-                love.graphics.rectangle("fill", (x-1)*30, (y-1)*30, 30, 30)
+        if self.grid[y] then
+            for x = 1, self.width do
+                if self.grid[y][x] == 1 then
+                    love.graphics.rectangle("fill", (x-1)*30, (y-1)*30, 30, 30)
+                end
             end
         end
     end
-    self.piece:draw()
+    if self.piece then
+        self.piece:draw()
+    end
 end
+
 
 return Board

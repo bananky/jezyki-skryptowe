@@ -28,6 +28,10 @@ function Piece:move(dx, dy, grid)
 end
 
 function Piece:rotate(grid)
+    if not self.shape or not self.shape[1] then
+        return
+    end
+
     local new = {}
     for y = 1, #self.shape[1] do
         new[y] = {}
@@ -35,12 +39,14 @@ function Piece:rotate(grid)
             new[y][x] = self.shape[#self.shape - x + 1][y]
         end
     end
+
     local old = self.shape
     self.shape = new
     if self:collides(grid) then
         self.shape = old
     end
 end
+
 
 function Piece:collides(grid)
     for y = 1, #self.shape do
@@ -80,5 +86,15 @@ function Piece:draw()
         end
     end
 end
+
+function Piece.fromSave(shape, x, y)
+    local self = setmetatable({}, Piece)
+    self.shape = shape or {{1}}
+    self.x = x or 4
+    self.y = y or 1
+    return self
+end
+
+
 
 return Piece
