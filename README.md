@@ -44,7 +44,7 @@ kategoria [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/4
 :white_check_mark: 5.0 Dane należy zapisać w bazie danych np. SQLite via Sequel [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/5f23cb0171550e6e655e1bf1ff532b5df59c3c5f)
 
 
-**Zadanie 4 ** Tetris  w Lua
+**Zadanie 4** Tetris  w Lua
 
 Należy stworzyć grę Tetris w Lua na frameworku Löve
 (https://love2d.org/).
