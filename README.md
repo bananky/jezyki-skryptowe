@@ -42,3 +42,20 @@ kategoria [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/4
 :white_check_mark: 4.5 Należy zapisać linki do produktów [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/339a1c2b591fbb4f45e29520a0c1baf465f23669)
 
 :white_check_mark: 5.0 Dane należy zapisać w bazie danych np. SQLite via Sequel [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/5f23cb0171550e6e655e1bf1ff532b5df59c3c5f)
+
+
+**Zadanie 4 ** Tetris  w Lua
+
+Należy stworzyć grę Tetris w Lua na frameworku Löve
+(https://love2d.org/).
+
+:white_check_mark: 3.0 Postawowa wersja dekstopowa z obsługą na klawiaturze - minimum 4
+rodzaje klocków [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/eb95c910d5835b73c630d6d55cdcaa151fe4e2c3)
+
+:white_check_mark: 3.5 Zapis i odczyt gier [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/70b3cfa543177c7a059b963dd69b889bc92a98ab)
+
+4.0 Dodanie efektów dźwiękowych przy akcjach
+
+4.5 Dodanie animacji przy zbijaniu klocków
+
+5.0 Wersja na iOS lub Android z implementacją touch zamiast klawiatury
