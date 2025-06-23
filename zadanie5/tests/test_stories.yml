@@ -1,0 +1,24 @@
+version: "3.1"
+
+stories:
+
+- story: greeting test
+  steps:
+  - user: |
+      cześć
+    intent: greet
+  - action: utter_greet
+
+- story: ask opening hours test
+  steps:
+  - user: |
+      o której jesteście otwarci?
+    intent: ask_opening_hours
+  - action: utter_opening_hours
+
+- story: ask menu test
+  steps:
+  - user: |
+      pokaż menu
+    intent: ask_menu
+  - action: utter_menu

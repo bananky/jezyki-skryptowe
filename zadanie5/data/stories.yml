@@ -1,0 +1,17 @@
+version: "3.1"
+
+stories:
+- story: przywitanie
+  steps:
+    - intent: greet
+    - action: utter_greet
+
+- story: zapytanie o godziny otwarcia
+  steps:
+    - intent: ask_opening_hours
+    - action: utter_opening_hours
+
+- story: zapytanie o menu
+  steps:
+    - intent: ask_menu
+    - action: utter_menu
