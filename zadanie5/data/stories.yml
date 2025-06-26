@@ -14,4 +14,4 @@ stories:
 - story: zapytanie o menu
   steps:
     - intent: ask_menu
-    - action: utter_menu
+    - action: action_menu

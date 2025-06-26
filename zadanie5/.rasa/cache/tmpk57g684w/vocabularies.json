@@ -1,0 +1,48 @@
+{
+  "text": {
+    "cześć": 1,
+    "hej": 7,
+    "dzień": 5,
+    "dobry": 4,
+    "jakie": 8,
+    "są": 18,
+    "godziny": 6,
+    "otwarcia": 14,
+    "o": 13,
+    "której": 11,
+    "otwieracie": 15,
+    "kiedy": 10,
+    "jesteście": 9,
+    "czynni": 2,
+    "pokaż": 17,
+    "menu": 12,
+    "co": 0,
+    "podajecie": 16,
+    "dania": 3
+  },
+  "intent": {
+    "greet": 2,
+    "ask_opening_hours": 1,
+    "ask_menu": 0
+  },
+  "response": null,
+  "action_name": {
+    "action_listen": 6,
+    "action_restart": 9,
+    "action_session_start": 11,
+    "action_default_fallback": 4,
+    "action_deactivate_loop": 1,
+    "action_revert_fallback_events": 10,
+    "action_default_ask_affirmation": 2,
+    "action_default_ask_rephrase": 3,
+    "action_two_stage_fallback": 12,
+    "action_unlikely_intent": 13,
+    "action_back": 0,
+    "action_extract_slots": 5,
+    "action_menu": 7,
+    "action_opening_hours": 8,
+    "utter_greet": 14
+  },
+  "action_text": null,
+  "intent_response_key": null
+}

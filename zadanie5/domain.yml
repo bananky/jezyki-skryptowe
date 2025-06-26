@@ -7,13 +7,11 @@ intents:
 
 actions:
   - action_opening_hours
+  - action_menu
 
 responses:
   utter_greet:
     - text: "Cześć! W czym mogę pomóc?"
-
-  utter_menu:
-    - text: "W naszym menu: pizza, makaron, sałatka."
 
 session_config:
   session_expiration_time: 60

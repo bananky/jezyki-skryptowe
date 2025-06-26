@@ -9,8 +9,6 @@ responses:
   utter_greet:
     - text: "Cześć! W czym mogę pomóc?"
 
-  utter_menu:
-    - text: "Dziś w menu: pizza, makaron, sałatka."
 
 rules:
   - rule: Przywitanie
@@ -21,7 +19,7 @@ rules:
   - rule: Zapytanie o menu
     steps:
       - intent: ask_menu
-      - action: utter_menu
+      - action: action_menu
 
   - rule: Zapytanie o godziny otwarcia
     steps:
