@@ -59,3 +59,22 @@ rodzaje klocków [Link do commita](https://github.com/bananky/jezyki-skryptowe/c
 4.5 Dodanie animacji przy zbijaniu klocków
 
 5.0 Wersja na iOS lub Android z implementacją touch zamiast klawiatury
+
+
+**Zadanie 5** Czatbot Rasa Resturacja
+
+Czatbot powinien być zintegrowany z minimum jednym czatem: slack,
+discord, messenger, ale nalezy wykorzystać framework Rasa
+(https://rasa.com/).
+
+:white_check_mark: 3.0 Nalezy zaimplementować minimum 3 ściezki (stories) - wykrywać
+intencję (intent) [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/e6962cc70eb9b5ef49744f33d522cf349f06565d)
+
+:white_check_mark: 3.5 Informację o godzinach otwarcia restauracji nalezy pobierać z
+pliku (action) [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/501c02e202bf4111f688155e038f0dda58c579fb)
+
+4.0 Bot potrafi wyświetlić menu z pliku
+
+4.5 Bot potrafi zebrać zamówienie i je podsumować
+
+5.0 Bot potrafi zebrać adres dostawy
