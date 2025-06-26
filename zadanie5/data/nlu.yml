@@ -18,3 +18,10 @@ nlu:
     - pokaż menu
     - co podajecie?
     - jakie są dania?
+    
+- intent: order_food
+  examples: |
+    - zamawiam [pizzę margherita](dish)
+    - poproszę [makaron carbonara](dish)
+    - wezmę [sałatkę grecką](dish)
+    - chciałbym [zupę pomidorową](dish)

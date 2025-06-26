@@ -1,13 +1,27 @@
 version: "3.1"
 
+entities:
+ - dish
+
+slots:
+  ordered_items:
+    type: list
+    influence_conversation: false
+    mappings:
+     - type: custom
+
 intents:
   - greet
   - ask_opening_hours
   - ask_menu
+  - order_food
+  - summarize_order
 
 actions:
   - action_opening_hours
   - action_menu
+  - action_take_order
+  - action_summarize_order
 
 responses:
   utter_greet:

@@ -25,6 +25,16 @@ rules:
     steps:
       - intent: ask_opening_hours
       - action: action_opening_hours
+      
+  - rule: Przyjmij zamówienie
+    steps:
+      - intent: order_food
+      - action: action_take_order
+
+  - rule: Podsumuj zamówienie
+    steps:
+      - intent: summarize_order
+      - action: action_summarize_order
 
 session_config:
   session_expiration_time: 60
