@@ -9,8 +9,8 @@ stories:
 - story: zapytanie o godziny otwarcia
   steps:
     - intent: ask_opening_hours
-    - action: utter_opening_hours
-
+    - action: action_opening_hours
+    
 - story: zapytanie o menu
   steps:
     - intent: ask_menu

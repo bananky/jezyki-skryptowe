@@ -9,11 +9,24 @@ responses:
   utter_greet:
     - text: "Cześć! W czym mogę pomóc?"
 
-  utter_opening_hours:
-    - text: "Restauracja jest otwarta od 10:00 do 22:00."
-
   utter_menu:
     - text: "Dziś w menu: pizza, makaron, sałatka."
+
+rules:
+  - rule: Przywitanie
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: Zapytanie o menu
+    steps:
+      - intent: ask_menu
+      - action: utter_menu
+
+  - rule: Zapytanie o godziny otwarcia
+    steps:
+      - intent: ask_opening_hours
+      - action: action_opening_hours
 
 session_config:
   session_expiration_time: 60
