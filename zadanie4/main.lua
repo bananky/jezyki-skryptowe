@@ -3,6 +3,8 @@ local Board = require("board")
 local state = "menu" 
 local board
 
+love.graphics.setDefaultFilter("nearest", "nearest")
+
 function love.load()
     love.window.setTitle("Tetris")
     love.window.setMode(300, 600)
@@ -23,23 +25,34 @@ function love.draw()
     end
 end
 
-function love.keypressed(key)
-    if state == "menu" and key == "return" then
+function love.touchpressed(id, x, y, dx, dy, pressure)
+    handleInput(x, y)
+end
+
+function love.mousepressed(x, y, button)
+    handleInput(x, y)
+end
+
+function handleInput(x, y)
+    if state == "menu" then
         board = Board.new(10, 20)
         state = "playing"
-    elseif state == "playing" then
-        if key == "s" then
-            board:saveGame()
-        elseif key == "l" then
-            board:loadGame()
-        elseif key == "left" then
-            board:movePiece(-1)
-        elseif key == "right" then
-            board:movePiece(1)
-        elseif key == "down" then
-            board:dropPiece()
-        elseif key == "up" then
-            board:rotatePiece()
-        end
+        return
+    end
+
+    if state ~= "playing" then return end
+
+    local screenWidth = love.graphics.getWidth()
+    local screenHeight = love.graphics.getHeight()
+
+    if y > screenHeight * 0.7 then
+        board:dropPiece()
+    elseif x < screenWidth * 0.3 then
+        board:movePiece(-1)
+    elseif x > screenWidth * 0.7 then
+        board:movePiece(1)
+    else
+        board:rotatePiece()
     end
 end
+
