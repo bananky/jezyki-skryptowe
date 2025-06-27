@@ -27,16 +27,49 @@ function Board.new(width, height)
     self.piece = Piece.newRandom()
     self.timer = 0
     self.delay = 0.5
+    self.clearingLines = {}      
+    self.clearAnimationTime = 0   
+    self.clearAnimationDuration = 0.3 
+
     return self
 end
 
+function Board:checkLinesToClear()
+    local lines = {}
+    for y = 1, self.height do
+        local full = true
+        for x = 1, self.width do
+            if self.grid[y][x] == 0 then
+                full = false
+                break
+            end
+        end
+        if full then
+            table.insert(lines, y)
+        end
+    end
+    return lines
+end
+
+
 function Board:update(dt)
     self.timer = self.timer + dt
+
+    if self.clearAnimationTime > 0 then
+        self.clearAnimationTime = self.clearAnimationTime - dt
+        if self.clearAnimationTime <= 0 then
+            self:actuallyClearLines()
+            self.piece = Piece.newRandom()
+        end
+        return
+    end
+
     if self.timer >= self.delay then
         self:dropPiece()
         self.timer = 0
     end
 end
+
 
 function Board:movePiece(dx)
     if self.piece:move(dx, 0, self.grid) then
@@ -48,13 +81,29 @@ end
 function Board:dropPiece()
     if not self.piece:move(0, 1, self.grid) then
         self.piece:lock(self.grid)
-        sounds.lock:play()
-        local cleared = self:clearLines()
-        if cleared > 0 then
+        self.clearingLines = self:checkLinesToClear()
+        if #self.clearingLines > 0 then
+            self.clearAnimationTime = self.clearAnimationDuration
             sounds.clear:play()
+        else
+            self.piece = Piece.newRandom()
         end
-        self.piece = Piece.newRandom()
+        sounds.lock:play()
     end
+end
+
+
+function Board:actuallyClearLines()
+    table.sort(self.clearingLines)
+    for i = #self.clearingLines, 1, -1 do
+        local y = self.clearingLines[i]
+        table.remove(self.grid, y)
+        table.insert(self.grid, 1, {})
+        for x = 1, self.width do
+            self.grid[1][x] = 0
+        end
+    end
+    self.clearingLines = {}
 end
 
 
@@ -112,18 +161,31 @@ end
 
 function Board:draw()
     for y = 1, self.height do
-        if self.grid[y] then
-            for x = 1, self.width do
-                if self.grid[y][x] == 1 then
-                    love.graphics.rectangle("fill", (x-1)*30, (y-1)*30, 30, 30)
+        for x = 1, self.width do
+            if self.grid[y][x] == 1 then
+                local isClearing = false
+                for _, ly in ipairs(self.clearingLines) do
+                    if ly == y then
+                        isClearing = true
+                        break
+                    end
                 end
+                if isClearing then
+                    local alpha = 0.5 + 0.5 * math.sin(love.timer.getTime() * 20)
+                    love.graphics.setColor(1, 1, 1, alpha)
+                else
+                    love.graphics.setColor(0.5, 0.5, 1)
+                end
+                love.graphics.rectangle("fill", (x - 1) * 30, (y - 1) * 30, 30, 30)
             end
         end
     end
+
     if self.piece then
         self.piece:draw()
     end
 end
+
 
 
 return Board
