@@ -20,7 +20,7 @@ class ActionTakeOrder(Action):
             dispatcher.utter_message(text="Nie rozpoznałem żadnego dania z menu 😔")
             return []
 
-        dispatcher.utter_message(text=f"✅ Zamówienie przyjęte: {', '.join(dishes)}")
+        dispatcher.utter_message(text=f"✅ Zamówienie przyjęte: {', '.join(dishes)}. Podaj prosze adres dostawy.")
         return [SlotSet("ordered_items", dishes)]
 
 
@@ -83,3 +83,17 @@ class ActionSummarizeOrder(Action):
             dispatcher.utter_message(text=f"📦 Twoje zamówienie:\n{summary}")
 
         return []
+
+
+class ActionConfirmAddress(Action):
+
+    def name(self) -> Text:
+        return "action_confirm_address"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        address = tracker.latest_message.get("text")
+        dispatcher.utter_message(text=f"Zamówienie zostanie dostarczone na adres: {address}.")
+        return [SlotSet("delivery_address", address)]

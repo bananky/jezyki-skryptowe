@@ -9,19 +9,23 @@ slots:
     influence_conversation: false
     mappings:
      - type: custom
+  delivery_address:
+    type: text
+    mappings:
+      - type: custom
 
 intents:
   - greet
   - ask_opening_hours
   - ask_menu
   - order_food
-  - summarize_order
+  - give_address
 
 actions:
   - action_opening_hours
   - action_menu
   - action_take_order
-  - action_summarize_order
+  - action_confirm_address
 
 responses:
   utter_greet:

@@ -25,3 +25,10 @@ nlu:
     - poproszę [makaron carbonara](dish)
     - wezmę [sałatkę grecką](dish)
     - chciałbym [zupę pomidorową](dish)
+
+- intent: give_address
+  examples: |
+   - Kraków, ul. Długa 12
+   - ul. Szeroka 5/3, Warszawa
+   - Zamoyskiego 8, Gdańsk
+   - Mój adres to Mickiewicza 21
