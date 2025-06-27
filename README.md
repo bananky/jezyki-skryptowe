@@ -77,4 +77,4 @@ pliku (action) [Link do commita](https://github.com/bananky/jezyki-skryptowe/com
 
 :white_check_mark: 4.5 Bot potrafi zebrać zamówienie i je podsumować [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/5efce41ccae2ad3bd366eeaa9987502d69307f69)
 
-5.0 Bot potrafi zebrać adres dostawy
+:white_check_mark: 5.0 Bot potrafi zebrać adres dostawy [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/dd2638bf99db175f4fe46f236e4dba5ce5ecb443)
