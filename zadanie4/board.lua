@@ -5,10 +5,10 @@ local Save = require("save")
 local sounds = {
     move = love.audio.newSource("assets/move.wav", "static"),
     rotate = love.audio.newSource("assets/rotate.wav", "static"),
-    drop = love.audio.newSource("assets/drop.wav", "static"),
     lock = love.audio.newSource("assets/lock.wav", "static"),
     clear = love.audio.newSource("assets/clear.wav", "static")
 }
+
 
 local Board = {}
 Board.__index = Board
@@ -54,8 +54,6 @@ function Board:dropPiece()
             sounds.clear:play()
         end
         self.piece = Piece.newRandom()
-    else
-        sounds.drop:play()
     end
 end
 
@@ -89,6 +87,7 @@ function Board:clearLines()
     end
     return cleared
 end
+
 
 
 function Board:saveGame()
