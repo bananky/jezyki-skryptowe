@@ -58,7 +58,7 @@ rodzaje klocków [Link do commita](https://github.com/bananky/jezyki-skryptowe/c
 
 :white_check_mark: 4.5 Dodanie animacji przy zbijaniu klocków [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/23f052fb07e02c4e85060c4b28ed49b931e77766)
 
-5.0 Wersja na iOS lub Android z implementacją touch zamiast klawiatury
+:white_check_mark: 5.0 Wersja na iOS lub Android z implementacją touch zamiast klawiatury [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/b3070f6ac4259fe835917f96023eb946a3c30625)
 
 
 **Zadanie 5** Czatbot Rasa Resturacja
