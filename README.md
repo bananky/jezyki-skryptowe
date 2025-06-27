@@ -54,7 +54,7 @@ rodzaje klocków [Link do commita](https://github.com/bananky/jezyki-skryptowe/c
 
 :white_check_mark: 3.5 Zapis i odczyt gier [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/70b3cfa543177c7a059b963dd69b889bc92a98ab)
 
-4.0 Dodanie efektów dźwiękowych przy akcjach
+:white_check_mark: 4.0 Dodanie efektów dźwiękowych przy akcjach [Link do commita](https://github.com/bananky/jezyki-skryptowe/commit/374ab961f01d74b5fca0a964219b267121e5cb50)
 
 4.5 Dodanie animacji przy zbijaniu klocków
 
